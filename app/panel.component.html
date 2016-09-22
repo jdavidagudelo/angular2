@@ -1,0 +1,20 @@
+<div *ngIf="hero" class="resizable ui-widget-content">
+  <div style="height:100px; width:100px; background-color:red;">
+       <div *ngFor="let hero of innerHeroes"
+        (mousedown)="onMouseDownElement($event, hero)"
+        (mouseup)="onMouseUp($event)"
+        (mousemove)="onMouseMove($event)"
+        [style.left] = 'hero.x'
+        [style.top] = 'hero.y'
+        [style.position] = "'absolute'"
+        [class.selected]="hero === selectedHero">
+        <div *ngIf="hero.type === 'panel'">
+         <draggable-panel [hero]="hero" [heroes]="innerHeroes"></draggable-panel></div>
+        <div *ngIf="hero.type === 'button'">
+         <draggable-button [hero]="hero" [heroes]="innerHeroes"></draggable-button></div></div>
+  </div>
+  <button type="button" (click)="onRemoveHero($event, hero)"><i class="fa fa-times-circle" aria-hidden="true"></i>
+</button>
+  <button type="button" (click)="onCreateButtonElement($event)"><i class="fa fa-plus" aria-hidden="true"></i>
+</button>
+</div>

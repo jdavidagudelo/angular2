@@ -1,0 +1,26 @@
+<table style="width:100%; height:100%;">
+  <tr>
+    <td style="width:10%; height:100%;" class="resizable ui-widget-content">
+       <div class='overlay'>
+         <button type="button" (mousedown)='onCreateButtonElement($event)'>Create new Text Field</button>
+         <button type="button" (mousedown)='onCreatePanelElement($event)'>Create new panel</button>
+       </div>
+    </td>
+    <td style="width:90%; height:100%;">
+       <div class="overlay">
+       <ul class="heroes">
+       <li *ngFor="let hero of heroes"
+        (mousedown)="onMouseDownElement($event, hero)"
+        [style.left] = 'hero.x'
+        [style.top] = 'hero.y'
+        [style.position] = "'absolute'"
+        [class.selected]="hero === selectedHero">
+        <div *ngIf="hero.type === 'panel'">
+         <draggable-panel [hero]="hero" [heroes]="heroes" [innerHeroes]="[]"></draggable-panel></div>
+        <div *ngIf="hero.type === 'button'">
+         <draggable-button [hero]="hero" [heroes]="heroes"></draggable-button></div></li>
+     </ul>
+</div></td>
+
+  </tr>
+</table>

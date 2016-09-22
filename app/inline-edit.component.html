@@ -1,0 +1,7 @@
+   <div *ngIf="hero">
+      <div>
+        <a href='#' (click)="startEditingHero(hero)" [hidden]="hero.editing" draggable="false">{{hero.name}}</a>
+        <input [(ngModel)]="hero.name" placeholder="name" [hidden]="!hero.editing" (blur)="stopEditingHero(hero)"/>
+        <button type="button" (click)="stopEditingHero(hero)" [hidden]="!hero.editing"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
+      </div>
+    </div>
